@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FinancialApp.Data.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,8 @@ namespace FinancialApp.Data.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
                     Amount = table.Column<double>(nullable: false),
-                    Currency = table.Column<string>(nullable: true)
+                    Currency = table.Column<string>(nullable: true),
+                    ConversionRate = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -46,18 +47,18 @@ namespace FinancialApp.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Account",
-                columns: new[] { "Id", "Amount", "Currency", "Name" },
-                values: new object[] { -1L, 1500.0, "USD", "Cuenta en dolares 1" });
+                columns: new[] { "Id", "Amount", "ConversionRate", "Currency", "Name" },
+                values: new object[] { -1L, 0.0, 1.0, "USD", "Cuenta en dolares 1" });
 
             migrationBuilder.InsertData(
                 table: "Account",
-                columns: new[] { "Id", "Amount", "Currency", "Name" },
-                values: new object[] { -2L, 1200.0, "EUR", "Cuenta en euros única" });
+                columns: new[] { "Id", "Amount", "ConversionRate", "Currency", "Name" },
+                values: new object[] { -2L, 0.0, 1.1799999999999999, "EUR", "Cuenta en euros única" });
 
             migrationBuilder.InsertData(
                 table: "Account",
-                columns: new[] { "Id", "Amount", "Currency", "Name" },
-                values: new object[] { -3L, 500.0, "USD", "Cuenta en dolares 2" });
+                columns: new[] { "Id", "Amount", "ConversionRate", "Currency", "Name" },
+                values: new object[] { -3L, 0.0, 1.0, "USD", "Cuenta en dolares 2" });
 
             migrationBuilder.InsertData(
                 table: "Transaction",

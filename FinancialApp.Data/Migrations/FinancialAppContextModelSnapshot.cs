@@ -16,13 +16,16 @@ namespace FinancialApp.Data.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.7");
 
-            modelBuilder.Entity("FinancialApp.Data.Models.Account", b =>
+            modelBuilder.Entity("FinancialApp.Data.Entities.Account", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<double>("Amount")
+                        .HasColumnType("REAL");
+
+                    b.Property<double>("ConversionRate")
                         .HasColumnType("REAL");
 
                     b.Property<string>("Currency")
@@ -39,27 +42,30 @@ namespace FinancialApp.Data.Migrations
                         new
                         {
                             Id = -1L,
-                            Amount = 1500.0,
+                            Amount = 0.0,
+                            ConversionRate = 1.0,
                             Currency = "USD",
                             Name = "Cuenta en dolares 1"
                         },
                         new
                         {
                             Id = -2L,
-                            Amount = 1200.0,
+                            Amount = 0.0,
+                            ConversionRate = 1.1799999999999999,
                             Currency = "EUR",
                             Name = "Cuenta en euros única"
                         },
                         new
                         {
                             Id = -3L,
-                            Amount = 500.0,
+                            Amount = 0.0,
+                            ConversionRate = 1.0,
                             Currency = "USD",
                             Name = "Cuenta en dolares 2"
                         });
                 });
 
-            modelBuilder.Entity("FinancialApp.Data.Models.Transaction", b =>
+            modelBuilder.Entity("FinancialApp.Data.Entities.Transaction", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -110,9 +116,9 @@ namespace FinancialApp.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("FinancialApp.Data.Models.Transaction", b =>
+            modelBuilder.Entity("FinancialApp.Data.Entities.Transaction", b =>
                 {
-                    b.HasOne("FinancialApp.Data.Models.Account", "Account")
+                    b.HasOne("FinancialApp.Data.Entities.Account", "Account")
                         .WithMany("Transactions")
                         .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)

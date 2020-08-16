@@ -21,6 +21,8 @@ namespace FinancialApp.Data.Entities
 
         public string Currency { get; set; }
 
+        public double ConversionRate { get; set; }
+
         public ICollection<Transaction> Transactions { get; set; }
     }
 }
