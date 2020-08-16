@@ -16,7 +16,7 @@ namespace FinancialApp.Data.Configurations
                 new Account
                 {
                     Id = -1,
-                    Amount = 0,
+                    Amount = 475,
                     Currency = "USD",
                     Name = "Cuenta en dolares 1",
                     ConversionRate = 1
@@ -24,7 +24,7 @@ namespace FinancialApp.Data.Configurations
                 new Account
                 {
                     Id = -2,
-                    Amount = 0,
+                    Amount = 1500,
                     Currency = "EUR",
                     Name = "Cuenta en euros única",
                     ConversionRate = 1.18

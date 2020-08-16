@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FinancialApp.Data.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,12 +48,12 @@ namespace FinancialApp.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Account",
                 columns: new[] { "Id", "Amount", "ConversionRate", "Currency", "Name" },
-                values: new object[] { -1L, 0.0, 1.0, "USD", "Cuenta en dolares 1" });
+                values: new object[] { -1L, 475.0, 1.0, "USD", "Cuenta en dolares 1" });
 
             migrationBuilder.InsertData(
                 table: "Account",
                 columns: new[] { "Id", "Amount", "ConversionRate", "Currency", "Name" },
-                values: new object[] { -2L, 0.0, 1.1799999999999999, "EUR", "Cuenta en euros única" });
+                values: new object[] { -2L, 1500.0, 1.1799999999999999, "EUR", "Cuenta en euros única" });
 
             migrationBuilder.InsertData(
                 table: "Account",
@@ -63,17 +63,22 @@ namespace FinancialApp.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Transaction",
                 columns: new[] { "Id", "AccountId", "Amount", "Description", "TransactionDate" },
-                values: new object[] { -1L, -1L, -20.0, "Comida Dennys", new DateTime(2020, 8, 14, 0, 0, 0, 0, DateTimeKind.Local) });
+                values: new object[] { -5L, -1L, 500.0, "Salario", new DateTime(2020, 8, 11, 0, 0, 0, 0, DateTimeKind.Local) });
 
             migrationBuilder.InsertData(
                 table: "Transaction",
                 columns: new[] { "Id", "AccountId", "Amount", "Description", "TransactionDate" },
-                values: new object[] { -3L, -1L, -5.0, "Corte de pelo", new DateTime(2020, 8, 13, 0, 0, 0, 0, DateTimeKind.Local) });
+                values: new object[] { -1L, -1L, -20.0, "Comida Dennys", new DateTime(2020, 8, 15, 0, 0, 0, 0, DateTimeKind.Local) });
 
             migrationBuilder.InsertData(
                 table: "Transaction",
                 columns: new[] { "Id", "AccountId", "Amount", "Description", "TransactionDate" },
-                values: new object[] { -2L, -2L, 1500.0, "Salario", new DateTime(2020, 8, 15, 0, 0, 0, 0, DateTimeKind.Local) });
+                values: new object[] { -3L, -1L, -5.0, "Corte de pelo", new DateTime(2020, 8, 14, 0, 0, 0, 0, DateTimeKind.Local) });
+
+            migrationBuilder.InsertData(
+                table: "Transaction",
+                columns: new[] { "Id", "AccountId", "Amount", "Description", "TransactionDate" },
+                values: new object[] { -2L, -2L, 1500.0, "Salario", new DateTime(2020, 8, 16, 0, 0, 0, 0, DateTimeKind.Local) });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Transaction_AccountId",

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinancialApp.Data.Migrations
 {
     [DbContext(typeof(FinancialAppContext))]
-    [Migration("20200816013451_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20200816212520_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,7 +44,7 @@ namespace FinancialApp.Data.Migrations
                         new
                         {
                             Id = -1L,
-                            Amount = 0.0,
+                            Amount = 475.0,
                             ConversionRate = 1.0,
                             Currency = "USD",
                             Name = "Cuenta en dolares 1"
@@ -52,7 +52,7 @@ namespace FinancialApp.Data.Migrations
                         new
                         {
                             Id = -2L,
-                            Amount = 0.0,
+                            Amount = 1500.0,
                             ConversionRate = 1.1799999999999999,
                             Currency = "EUR",
                             Name = "Cuenta en euros única"
@@ -94,11 +94,19 @@ namespace FinancialApp.Data.Migrations
                     b.HasData(
                         new
                         {
+                            Id = -5L,
+                            AccountId = -1L,
+                            Amount = 500.0,
+                            Description = "Salario",
+                            TransactionDate = new DateTime(2020, 8, 11, 0, 0, 0, 0, DateTimeKind.Local)
+                        },
+                        new
+                        {
                             Id = -1L,
                             AccountId = -1L,
                             Amount = -20.0,
                             Description = "Comida Dennys",
-                            TransactionDate = new DateTime(2020, 8, 14, 0, 0, 0, 0, DateTimeKind.Local)
+                            TransactionDate = new DateTime(2020, 8, 15, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
@@ -106,7 +114,7 @@ namespace FinancialApp.Data.Migrations
                             AccountId = -2L,
                             Amount = 1500.0,
                             Description = "Salario",
-                            TransactionDate = new DateTime(2020, 8, 15, 0, 0, 0, 0, DateTimeKind.Local)
+                            TransactionDate = new DateTime(2020, 8, 16, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
@@ -114,7 +122,7 @@ namespace FinancialApp.Data.Migrations
                             AccountId = -1L,
                             Amount = -5.0,
                             Description = "Corte de pelo",
-                            TransactionDate = new DateTime(2020, 8, 13, 0, 0, 0, 0, DateTimeKind.Local)
+                            TransactionDate = new DateTime(2020, 8, 14, 0, 0, 0, 0, DateTimeKind.Local)
                         });
                 });
 

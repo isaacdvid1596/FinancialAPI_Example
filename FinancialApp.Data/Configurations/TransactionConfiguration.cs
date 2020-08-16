@@ -15,6 +15,14 @@ namespace FinancialApp.Data.Configurations
             {
                 new Transaction
                 {
+                    Id = -5,
+                    Amount = 500,
+                    AccountId = -1,
+                    Description = "Salario",
+                    TransactionDate = DateTime.Today.AddDays(-5)
+                },
+                new Transaction
+                {
                     Id = -1,
                     Amount = -20,
                     AccountId = -1,
