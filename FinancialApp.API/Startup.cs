@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using FinancialApp.Core;
 using FinancialApp.Data;
-using FinancialApp.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -45,7 +44,7 @@ namespace FinancialApp.API
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<FinancialAppContext>();
-                context.Database.Migrate();
+                context.Database.EnsureCreated();
             }
 
             if (env.IsDevelopment())
