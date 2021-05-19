@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace FinancialApp.Data.Entities
+namespace FinancialApp.Core.Entities
 {
     public class Account
     {

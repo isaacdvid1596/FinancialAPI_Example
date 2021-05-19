@@ -1,6 +1,6 @@
 ﻿using System;
+using FinancialApp.Core.Entities;
 using FinancialApp.Data.Configurations;
-using FinancialApp.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace FinancialApp.Data
