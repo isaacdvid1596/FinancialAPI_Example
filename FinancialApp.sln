@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinancialApp.API", "Financi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinancialApp.Core", "FinancialApp.Core\FinancialApp.Core.csproj", "{101C57AB-131A-44E7-96AE-5569A956A2D1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinancialApp.Infrastructure", "FinancialApp.Data\FinancialApp.Infrastructure.csproj", "{25AD48B5-2E29-4AE1-A04D-0AD8B3997136}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinancialApp.Infrastructure", "FinancialApp.Infrastructure\FinancialApp.Infrastructure.csproj", "{35DD138C-F9C0-4119-9CBE-7A50AC9FBF33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{101C57AB-131A-44E7-96AE-5569A956A2D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{101C57AB-131A-44E7-96AE-5569A956A2D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{101C57AB-131A-44E7-96AE-5569A956A2D1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{25AD48B5-2E29-4AE1-A04D-0AD8B3997136}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{25AD48B5-2E29-4AE1-A04D-0AD8B3997136}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{25AD48B5-2E29-4AE1-A04D-0AD8B3997136}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{25AD48B5-2E29-4AE1-A04D-0AD8B3997136}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35DD138C-F9C0-4119-9CBE-7A50AC9FBF33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35DD138C-F9C0-4119-9CBE-7A50AC9FBF33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35DD138C-F9C0-4119-9CBE-7A50AC9FBF33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35DD138C-F9C0-4119-9CBE-7A50AC9FBF33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
