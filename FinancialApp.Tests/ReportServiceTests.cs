@@ -6,7 +6,6 @@ using FinancialApp.Core;
 using FinancialApp.Core.Entities;
 using FinancialApp.Core.Interfaces;
 using FinancialApp.Core.Services;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel.Utilities;
 using Moq;
 using Xunit;
 
@@ -14,17 +13,25 @@ namespace FinancialApp.Tests
 {
     public class ReportServiceTests
     {
-
-        //moq
         [Fact]
         public void GetSummary_NonUSDTransactions_AreConvertedToUSD()
         {
+
             //arrange
+
+            /*
+             * metodo tiene dependencias de transaction repository
+             * se procede a falsificarlas con moq, y se crean metodos falsos
+             * cuando alguien invoque filter, se invoca lo que esta en linea 71
+             * se hace lo mismo para account pero en ese caso solo se declara el mock ya que no
+             * se usa en el metodo get summary en el repo original.
+             */
+
             var transactions = new List<Transaction>
             {
                 new Transaction
                 {
-                    Account = new Account
+                    Account = new Account()
                     {
                         Amount = 500,
                         ConversionRate = 0.25,
@@ -33,34 +40,32 @@ namespace FinancialApp.Tests
                     },
                     TransactionDate = DateTime.Today,
                     Amount = 100,
-                    Description = "Test 1"
-                },
-                new Transaction
+                    Description = "Test1"
+                },new Transaction
                 {
-                    Account = new Account
+                    Account = new Account()
                     {
-                        Amount = 2500,
+                        Amount = 400,
                         ConversionRate = 0.25,
-                        Name = "Account 2",
-                        Currency = "HNL"
-                    },
-                    TransactionDate = DateTime.Today,
-                    Amount = 400,
-                    Description = "Test 1"
-                },
-                new Transaction
-                {
-                    Account = new Account
-                    {
-                        Amount = 1000,
-                        ConversionRate = 0.25,
-                        Name = "Account 3",
+                        Name = "Account 1",
                         Currency = "HNL"
                     },
                     TransactionDate = DateTime.Today,
                     Amount = 200,
-                    Description = "Test 1"
-                }
+                    Description = "Test2"
+                },new Transaction
+                {
+                    Account = new Account()
+                    {
+                        Amount = 600,
+                        ConversionRate = 0.25,
+                        Name = "Account 1",
+                        Currency = "HNL"
+                    },
+                    TransactionDate = DateTime.Today,
+                    Amount = 300,
+                    Description = "Test3"
+                },
             };
 
             var transactionRepositoryMock = new Mock<IRepository<Transaction>>();
@@ -70,24 +75,29 @@ namespace FinancialApp.Tests
             var accountRepositoryMock = new Mock<IRepository<Account>>();
             var reportService = new ReportService(transactionRepositoryMock.Object, accountRepositoryMock.Object);
 
+
+
             //act
+
             var summary = reportService.GetSummary();
 
             //assert
-            var positiveTransactions = transactions.Where(x => x.Amount > 0).Sum(x => x.Amount * x.Account.ConversionRate);
-            var negativeTransactions = transactions.Where(x => x.Amount < 0).Sum(x => x.Amount * x.Account.ConversionRate);
+            var positiveTransaction = transactions.Where(x => x.Amount > 0).Sum(x => x.Amount * x.Account.ConversionRate);
+            var negativeTransaction = transactions.Where(x => x.Amount < 0).Sum(x => x.Amount * x.Account.ConversionRate);
 
+            Assert.Equal(positiveTransaction,summary.Result.TotalIncome);
+            Assert.Equal(negativeTransaction,summary.Result.TotalExpenses);
+            Assert.Equal(positiveTransaction+negativeTransaction,summary.Result.Total);
             Assert.True(summary.ResponseCode == ResponseCode.Success);
-            Assert.Equal(positiveTransactions, summary.Result.TotalIncome);
-            Assert.Equal(negativeTransactions, summary.Result.TotalExpenses);
-            Assert.Equal(positiveTransactions + negativeTransactions, summary.Result.Total);
+
         }
 
         [Fact]
         public void GetAccounts_ReturnsAllAccounts()
         {
-            //arrange
-            var accounts = new List<Account>
+            //arrange 
+
+            var accounts = new List<Account>()
             {
                 new Account
                 {
@@ -102,26 +112,37 @@ namespace FinancialApp.Tests
                     ConversionRate = 0.24,
                     Currency = "USD",
                     Name = "Account 2"
-                }
+                },
+                new Account
+                {
+                    Amount = 400,
+                    ConversionRate = 0.24,
+                    Currency = "USD",
+                    Name = "Account 3"
+                },
             };
 
             var transactionRepositoryMock = new Mock<IRepository<Transaction>>();
             var accountRepositoryMock = new Mock<IRepository<Account>>();
-            accountRepositoryMock.Setup(x => x.GetAll())
+            accountRepositoryMock.Setup(a => a.GetAll())
                 .Returns(accounts);
 
             var reportService = new ReportService(transactionRepositoryMock.Object, accountRepositoryMock.Object);
-            
+
             //act
+
             var result = reportService.GetAccounts();
 
             //assert
+
+            Assert.Equal(accounts.Count,result.Result.Count);
             Assert.True(result.ResponseCode == ResponseCode.Success);
-            Assert.Equal(accounts.Count, result.Result.Count);
-            foreach (var account in result.Result)
+
+            foreach (var account in accounts)
             {
                 Assert.Contains(accounts, x => x.Id == account.Id);
             }
+            
         }
     }
 }

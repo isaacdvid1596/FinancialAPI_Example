@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinancialApp.Core", "Financ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinancialApp.Infrastructure", "FinancialApp.Infrastructure\FinancialApp.Infrastructure.csproj", "{35DD138C-F9C0-4119-9CBE-7A50AC9FBF33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialApp.Tests", "FinancialApp.Tests\FinancialApp.Tests.csproj", "{D4FA1B99-73D9-48D4-A9B3-C3AD3ACCFAB3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialApp.Tests", "FinancialApp.Tests\FinancialApp.Tests.csproj", "{0F3AB9D0-7166-404B-BFB4-974D1485473D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{35DD138C-F9C0-4119-9CBE-7A50AC9FBF33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35DD138C-F9C0-4119-9CBE-7A50AC9FBF33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35DD138C-F9C0-4119-9CBE-7A50AC9FBF33}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D4FA1B99-73D9-48D4-A9B3-C3AD3ACCFAB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D4FA1B99-73D9-48D4-A9B3-C3AD3ACCFAB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D4FA1B99-73D9-48D4-A9B3-C3AD3ACCFAB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D4FA1B99-73D9-48D4-A9B3-C3AD3ACCFAB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F3AB9D0-7166-404B-BFB4-974D1485473D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F3AB9D0-7166-404B-BFB4-974D1485473D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F3AB9D0-7166-404B-BFB4-974D1485473D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F3AB9D0-7166-404B-BFB4-974D1485473D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

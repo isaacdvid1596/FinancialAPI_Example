@@ -15,16 +15,16 @@ namespace FinancialApp.Tests
             var connection = new SqliteConnection("DataSource=:memory:");
             connection.Open();
 
-            var dbContextOptions = new DbContextOptionsBuilder<FinancialAppContext>()
+            var dbContextOption = new DbContextOptionsBuilder<FinancialAppContext>()
                 .UseSqlite(connection)
                 .Options;
 
-            var context = new FinancialAppContext(dbContextOptions);
+            var context = new FinancialAppContext(dbContextOption);
             context.Database.EnsureCreated();
             return context;
         }
 
-        //extension
+
         public static void SeedAccounts(this FinancialAppContext context)
         {
             context.Add(new Account
@@ -34,15 +34,13 @@ namespace FinancialApp.Tests
                 Currency = "USD",
                 Name = "Account 1"
             });
-
             context.Add(new Account
             {
-                Amount = 560,
+                Amount = 550,
                 ConversionRate = 0.25,
                 Currency = "USD",
                 Name = "Account 2"
             });
-
             context.Add(new Account
             {
                 Amount = 450,
@@ -50,6 +48,7 @@ namespace FinancialApp.Tests
                 Currency = "HNL",
                 Name = "Account 3"
             });
+
             context.SaveChanges();
         }
     }
